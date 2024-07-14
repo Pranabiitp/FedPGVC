@@ -14,7 +14,7 @@ To choose the appropriate  model, run Models.py and choose the required model fo
 # Run FedPGVC
 After done with above process, you can run the FedPMVR, our proposed method.
 
-# Run FedPGVC
+# Run FedPGVC + Existing algorithms
 To incorporate FedPGVC with FedProx, FedNova, and FedBN run corresponding file e.g. FedProx + FedPGVC.py. 
 
 # Evaluation
