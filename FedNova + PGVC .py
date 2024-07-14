@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# In[1]:
 
 
 import os
@@ -9,7 +6,7 @@ gpu=int(input("Which gpu number you would like to allocate:"))
 os.environ["CUDA_VISIBLE_DEVICES"]=str(gpu)
 
 
-# In[3]:
+
 
 
 def test_model(X_test, Y_test,  model, comm_round):
@@ -24,7 +21,7 @@ def test_model(X_test, Y_test,  model, comm_round):
     return accuracy, loss
 
 
-# In[1]:
+
 
 
 import tensorflow as tf
@@ -47,7 +44,7 @@ label = one_hot_labels.squeeze(axis=1)
 print("Updated shape of labels:", label.shape)
 
 
-# In[6]:
+
 
 
 for i in range(1, 11):
@@ -58,7 +55,6 @@ for i in range(1, 11):
 test=test/255
 
 
-# In[7]:
 
 
 def create_clients(data_dict):
@@ -75,7 +71,7 @@ def create_clients(data_dict):
     return data_dict
 
 
-# In[8]:
+
 
 
 client_data1 = {
@@ -92,7 +88,7 @@ client_data1 = {
     'client10': (test, label)
 
 
-#     'client6': (test, label)
+
     
 }
 #create clients
@@ -115,14 +111,14 @@ client_data2 = {
 clients_batched = create_clients(client_data2)
 
 
-# In[9]:
+
 
 
 test_batched = create_clients(client_data1)
 clients_batched = create_clients(client_data2)
 
 
-# In[13]:
+
 
 
 def average(global_weights, local_normalizing_vec, mu, gmf, momentum):
@@ -135,13 +131,13 @@ def average(global_weights, local_normalizing_vec, mu, gmf, momentum):
     return global_weights
 
 
-# In[14]:
+
 
 
 client_names = list(clients_batched.keys())
 
 
-# In[2]:
+
 
 
 import numpy as np
@@ -267,7 +263,7 @@ for comm_round in range(comms_round):
 global_model.set_weights(best_weights)
 
 
-# In[ ]:
+
 
 
 
