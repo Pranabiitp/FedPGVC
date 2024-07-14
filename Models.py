@@ -1,6 +1,6 @@
 
 
-# Model for CIFAR10
+# Model for CIFAR100
 
 
 
