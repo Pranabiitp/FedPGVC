@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# In[1]:
 
 
 import os
@@ -9,7 +6,7 @@ gpu=int(input("Which gpu number you would like to allocate:"))
 os.environ["CUDA_VISIBLE_DEVICES"]=str(gpu)
 
 
-# In[3]:
+
 
 
 
@@ -27,7 +24,7 @@ def create_clients(data_dict):
     return data_dict
 
 
-# In[4]:
+
 
 
 
@@ -43,7 +40,7 @@ def test_model(X_test, Y_test,  model, comm_round):
     return accuracy, loss
 
 
-# In[5]:
+
 
 
 def calculate_fedprox_regularization(global_model, local_model, mu):
@@ -57,7 +54,7 @@ def calculate_fedprox_regularization(global_model, local_model, mu):
     return regularization_term
 
 
-# In[6]:
+
 
 
 def avg_weights(scaled_weight_list):
@@ -77,7 +74,7 @@ def avg_weights(scaled_weight_list):
     return avg_grad
 
 
-# In[7]:
+
 
 
 import tensorflow as tf
@@ -100,7 +97,7 @@ label = one_hot_labels.squeeze(axis=1)
 print("Updated shape of labels:", label.shape)
 
 
-# In[9]:
+
 
 
 for i in range(1, 11):
@@ -111,7 +108,7 @@ for i in range(1, 11):
 test=test/255
 
 
-# In[10]:
+
 
 
 client_data1 = {
@@ -151,13 +148,13 @@ client_data2 = {
 clients_batched = create_clients(client_data2)
 
 
-# In[15]:
+
 
 
 client_names = list(clients_batched.keys())
 
 
-# In[1]:
+
 
 
 
@@ -258,7 +255,7 @@ for comm_round in range(comms_round):
 global_model.set_weights(best_weights)
 
 
-# In[ ]:
+
 
 
 
