@@ -1,14 +1,14 @@
 
 import numpy as np
 import tensorflow as tf
-
+#CIFAR100
 # Set random seed for reproducibility
 np.random.seed(42)
 tf.random.set_seed(42)
 
-# Load CIFAR-10 dataset
-cifar10_data = tf.keras.datasets.cifar10
-(train_images, train_labels), (test_images, test_labels) = cifar10_data.load_data()
+# Load CIFAR-100 dataset
+cifar100_data = tf.keras.datasets.cifar100
+(train_images, train_labels), (test_images, test_labels) = cifar100_data.load_data()
 
 # Shuffle the dataset
 shuffle_indices = np.random.permutation(len(train_images))
@@ -18,12 +18,12 @@ train_labels_shuffled = train_labels[shuffle_indices]
 # Number of clients
 num_clients = 10
 
-# Number of classes in CIFAR-10
-num_classes = 10
+# Number of classes in CIFAR-100
+num_classes = 100
 
-beta=0.1
+alpha = 0.1
+
 # Simulate heterogeneous partition using Dirichlet distribution
-# Here, we'll assume equal proportions for simplicity
 proportions = np.random.dirichlet(np.ones(num_clients) * beta, size=num_classes)
 
 # Allocate data to clients
@@ -34,7 +34,7 @@ for class_label in range(num_classes):
         num_samples_for_client = int(proportions[class_label, client_idx] * num_samples_per_class)
         # Randomly select data indices for the client
         selected_indices = np.random.choice(
-            np.where(train_labels_shuffled[:,0] == class_label)[0],
+            np.where(train_labels_shuffled[:, 0] == class_label)[0],
             size=num_samples_for_client,
             replace=False
         )
@@ -64,7 +64,7 @@ for i in range(len(client_train_data)):
 
 
 
-
+#MNIST
 import numpy as np
 import tensorflow as tf
 
@@ -87,7 +87,7 @@ num_clients = 10
 # Number of classes in MNIST
 num_classes = 10
 
-beta=0.1
+alpha=0.1
 
 # Simulate heterogeneous partition using Dirichlet distribution
 # Here, we'll assume equal proportions for simplicity
@@ -132,7 +132,7 @@ for i in range(len(client_train_data)):
 # Now, client_train_data[i] and client_train_labels[i] contain the data and corresponding one-hot labels for the i-th client
 
 
-
+#FMNIST
 import numpy as np
 import tensorflow as tf
 
@@ -155,7 +155,7 @@ num_clients = 10
 # Number of classes in Fashion MNIST
 num_classes = 10
 
-beta=0.1
+alpha=0.1
 # Simulate heterogeneous partition using Dirichlet distribution
 # Here, we'll assume equal proportions for simplicity
 proportions = np.random.dirichlet(np.ones(num_clients) * beta, size=num_classes)
