@@ -24,7 +24,7 @@ num_classes = 100
 alpha = 0.1
 
 # Simulate heterogeneous partition using Dirichlet distribution
-proportions = np.random.dirichlet(np.ones(num_clients) * beta, size=num_classes)
+proportions = np.random.dirichlet(np.ones(num_clients) * alpha, size=num_classes)
 
 # Allocate data to clients
 client_data_indices = [[] for _ in range(num_clients)]
@@ -91,7 +91,7 @@ alpha=0.1
 
 # Simulate heterogeneous partition using Dirichlet distribution
 # Here, we'll assume equal proportions for simplicity
-proportions = np.random.dirichlet(np.ones(num_clients) * beta, size=num_classes)
+proportions = np.random.dirichlet(np.ones(num_clients) * alpha, size=num_classes)
 
 # Allocate data to clients
 client_data_indices = [[] for _ in range(num_clients)]
@@ -158,7 +158,7 @@ num_classes = 10
 alpha=0.1
 # Simulate heterogeneous partition using Dirichlet distribution
 # Here, we'll assume equal proportions for simplicity
-proportions = np.random.dirichlet(np.ones(num_clients) * beta, size=num_classes)
+proportions = np.random.dirichlet(np.ones(num_clients) * alpha, size=num_classes)
 
 # Allocate data to clients
 client_data_indices = [[] for _ in range(num_clients)]
